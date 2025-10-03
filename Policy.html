@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Privacy Policy</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin: 30px auto; padding: 16px; background: #f9f9f9;}
+        select { font-size: 1em; margin-bottom: 24px; }
+    </style>
+</head>
+<body>
+    <div style="text-align: right;">
+        <label for="lang-select"><b>Language:</b></label>
+        <select id="lang-select">
+            <option value="en">English</option>
+            <option value="de">Deutsch</option>
+            <option value="ru">Русский</option>
+        </select>
+    </div>
+    <div id="privacy-content"></div>
+
+<script>
+const translations = {
+    en: {
+        updated: "Last updated: September 24, 2025",
+        title: "Privacy Policy",
+        agreement: "By using this application, you confirm your agreement with the terms of this Privacy Policy. We may update this policy from time to time. All changes will be published on this page.",
+        whatData: "What data we may collect and why",
+        dataList: `
+            <li>analyzing app performance and fixing errors (for example, via Firebase Analytics);</li>
+            <li>displaying ads (via Google AdMob);</li>
+            <li>improving user experience (settings, app interactions).</li>
+        `,
+        dataDescription: "The application does not collect any personal data. We may collect anonymized technical data for the following purposes:",
+        dataInfo: "Collected data may include: device type, operating system version, system language, advertising identifiers, data about app interactions, and technical logs.",
+        ads: "Advertising and third-party services",
+        adsInfo: `Advertising in the app is provided via Google AdMob. For more information about their privacy policy, please visit: <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a>`,
+        firebase: "Google Firebase may be used for analytics and improving the app. The Google Privacy Policy also applies to these data.",
+        security: "Data security",
+        securityInfo: "We take reasonable measures to protect the collected information from unauthorized access, alteration, or deletion. However, no method of data transmission or storage can be absolutely secure.",
+        legal: "Legal requirements",
+        legalInfo: "Data may be disclosed in response to a lawful request from government authorities in accordance with applicable law.",
+        age: "Age restrictions",
+        ageInfo: "The application is not intended for use by children under 13 years old.",
+        storage: "Access to device storage",
+        storageInfo: "To enable core functions, the application requests permission to access your device storage. This is necessary to find and play music files, as well as to use your own images for theme customization.",
+        temp: "Temporary files",
+        tempInfo: "For some features (audio analysis, pause detection), the application may create temporary files on your device. These files are used locally only and are not shared with third parties. When audio files are removed from the playlist, the corresponding temporary files are also deleted automatically. If necessary, you can also manually delete all temporary files in the app settings.",
+        copyright: "Responsibility for audio file usage",
+        copyrightInfo: "The user is fully responsible for complying with copyright laws and the legality of using all audio files added to or played in the application. The developer does not check, store, or distribute user audio files and bears no responsibility for their content or legal use.",
+        contact: "Contact",
+        contactInfo: "If you have any questions regarding this Privacy Policy, you may contact us at: flitein@web.de"
+    },
+    de: {
+        updated: "Letzte Aktualisierung: 24. September 2025",
+        title: "Datenschutzerklärung",
+        agreement: "Durch die Nutzung dieser Anwendung bestätigen Sie Ihr Einverständnis mit den Bedingungen dieser Datenschutzerklärung. Wir können diese Richtlinie von Zeit zu Zeit aktualisieren. Alle Änderungen werden auf dieser Seite veröffentlicht.",
+        whatData: "Welche Daten wir sammeln und warum",
+        dataList: `
+            <li>Analyse der App-Leistung und Fehlerbehebung (z.B. über Firebase Analytics);</li>
+            <li>Anzeigen von Werbung (über Google AdMob);</li>
+            <li>Verbesserung der Benutzererfahrung (Einstellungen, App-Interaktionen).</li>
+        `,
+        dataDescription: "Die Anwendung sammelt keine personenbezogenen Daten. Wir können anonymisierte technische Daten für folgende Zwecke erfassen:",
+        dataInfo: "Gesammelte Daten können beinhalten: Gerätetyp, Betriebssystemversion, Systemsprache, Werbe-IDs, Daten zu App-Interaktionen und technische Protokolle.",
+        ads: "Werbung und Dienste Dritter",
+        adsInfo: `Werbung in der App wird über Google AdMob bereitgestellt. Weitere Informationen zu deren Datenschutzrichtlinie finden Sie hier: <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a>`,
+        firebase: "Google Firebase kann für Analysen und zur Verbesserung der App verwendet werden. Die Google-Datenschutzrichtlinie gilt auch für diese Daten.",
+        security: "Datensicherheit",
+        securityInfo: "Wir ergreifen angemessene Maßnahmen, um die gesammelten Informationen vor unbefugtem Zugriff, Änderung oder Löschung zu schützen. Keine Methode der Datenübertragung oder -speicherung kann jedoch absolut sicher sein.",
+        legal: "Gesetzliche Anforderungen",
+        legalInfo: "Daten können auf rechtmäßige Anfrage von Behörden gemäß geltendem Recht offengelegt werden.",
+        age: "Altersbeschränkungen",
+        ageInfo: "Die Anwendung ist nicht für die Nutzung durch Kinder unter 13 Jahren bestimmt.",
+        storage: "Zugriff auf Gerätespeicher",
+        storageInfo: "Um die Kernfunktionen zu ermöglichen, benötigt die Anwendung die Berechtigung zum Zugriff auf Ihren Gerätespeicher. Dies ist notwendig, um Musikdateien zu finden und abzuspielen sowie eigene Bilder für die Themenanpassung zu verwenden.",
+        temp: "Temporäre Dateien",
+        tempInfo: "Für einige Funktionen (Audioanalyse, Pausenerkennung) kann die Anwendung temporäre Dateien auf Ihrem Gerät erstellen. Diese Dateien werden nur lokal verwendet und nicht an Dritte weitergegeben. Wenn Audiodateien aus der Playlist entfernt werden, werden die entsprechenden temporären Dateien ebenfalls automatisch gelöscht. Bei Bedarf können Sie auch alle temporären Dateien in den App-Einstellungen manuell löschen.",
+        copyright: "Verantwortung für die Nutzung von Audiodateien",
+        copyrightInfo: "Der Nutzer ist für die Einhaltung der Urheberrechtsgesetze und die Rechtmäßigkeit der Verwendung aller zur Anwendung hinzugefügten oder abgespielten Audiodateien selbst verantwortlich. Der Entwickler überprüft, speichert oder verbreitet keine Benutzeraudiodateien und übernimmt keine Verantwortung für deren Inhalt oder rechtmäßige Nutzung.",
+        contact: "Kontakt",
+        contactInfo: "Bei Fragen zu dieser Datenschutzerklärung kontaktieren Sie uns bitte unter: flitein@web.de"
+    },
+    ru: {
+        updated: "Последнее обновление: 24 сентября 2025 г.",
+        title: "Политика конфиденциальности",
+        agreement: "Используя это приложение, вы подтверждаете согласие с условиями данной Политики конфиденциальности. Мы можем время от времени обновлять эту политику. Все изменения будут опубликованы на этой странице.",
+        whatData: "Какие данные мы собираем и зачем",
+        dataList: `
+            <li>анализ производительности приложения и исправление ошибок (например, через Firebase Analytics);</li>
+            <li>отображение рекламы (через Google AdMob);</li>
+            <li>улучшение пользовательского опыта (настройки, взаимодействие с приложением).</li>
+        `,
+        dataDescription: "Приложение не собирает личные данные. Мы можем собирать обезличенные технические данные для следующих целей:",
+        dataInfo: "Собираемые данные могут включать: тип устройства, версию операционной системы, язык системы, рекламные идентификаторы, данные о взаимодействии с приложением и технические логи.",
+        ads: "Реклама и сторонние сервисы",
+        adsInfo: `Реклама в приложении предоставляется через Google AdMob. Подробнее с их политикой конфиденциальности можно ознакомиться здесь: <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a>`,
+        firebase: "Для аналитики и улучшения приложения может использоваться Google Firebase. На эти данные также распространяется политика конфиденциальности Google.",
+        security: "Безопасность данных",
+        securityInfo: "Мы принимаем разумные меры для защиты собранной информации от несанкционированного доступа, изменения или удаления. Однако ни один способ передачи или хранения данных не может быть абсолютно безопасным.",
+        legal: "Юридические требования",
+        legalInfo: "Данные могут быть раскрыты по законному запросу государственных органов в соответствии с применимым законодательством.",
+        age: "Возрастные ограничения",
+        ageInfo: "Приложение не предназначено для использования детьми младше 13 лет.",
+        storage: "Доступ к памяти устройства",
+        storageInfo: "Для работы основных функций приложение запрашивает разрешение на доступ к памяти вашего устройства. Это необходимо для поиска и воспроизведения музыкальных файлов, а также использования собственных изображений для настройки темы.",
+        temp: "Временные файлы",
+        tempInfo: "Для некоторых функций (анализ аудио, определение пауз) приложение может создавать временные файлы на вашем устройстве. Эти файлы используются только локально и не передаются третьим лицам. При удалении аудиофайлов из плейлиста соответствующие временные файлы также удаляются автоматически. При необходимости вы можете вручную удалить все временные файлы в настройках приложения.",
+        copyright: "Ответственность за использование аудиофайлов",
+        copyrightInfo: "Пользователь несёт полную ответственность за соблюдение авторских прав и законность использования всех аудиофайлов, добавляемых в приложение или воспроизводимых в нём. Разработчик не проверяет, не хранит и не распространяет пользовательские аудиофайлы и не несёт ответственности за их содержимое или законное использование.",
+        contact: "Контакты",
+        contactInfo: "Если у вас есть вопросы по данной политике конфиденциальности, вы можете связаться с нами по адресу: flitein@web.de"
+    }
+};
+
+function render(lang) {
+    const t = translations[lang];
+    document.getElementById('privacy-content').innerHTML = `
+        <h1>${t.title}</h1>
+        <p><strong>${t.updated}</strong></p>
+        <p>${t.agreement}</p>
+        <h2>${t.whatData}</h2>
+        <p>${t.dataDescription}</p>
+        <ul>${t.dataList}</ul>
+        <p>${t.dataInfo}</p>
+        <h2>${t.ads}</h2>
+        <p>${t.adsInfo}</p>
+        <p>${t.firebase}</p>
+        <h2>${t.security}</h2>
+        <p>${t.securityInfo}</p>
+        <h2>${t.legal}</h2>
+        <p>${t.legalInfo}</p>
+        <h2>${t.age}</h2>
+        <p>${t.ageInfo}</p>
+        <h2>${t.storage}</h2>
+        <p>${t.storageInfo}</p>
+        <h2>${t.temp}</h2>
+        <p>${t.tempInfo}</p>
+        <h2>${t.copyright}</h2>
+        <p>${t.copyrightInfo}</p>
+        <h2>${t.contact}</h2>
+        <p>${t.contactInfo}</p>
+    `;
+}
+
+// Начальный язык
+let currentLang = "en";
+document.getElementById('lang-select').value = currentLang;
+render(currentLang);
+
+document.getElementById('lang-select').addEventListener('change', function() {
+    currentLang = this.value;
+    render(currentLang);
+});
+</script>
+</body>
+</html>
