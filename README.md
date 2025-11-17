@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.svg" alt="ListenMe Logo" width="140" height="140">
+  <img src="assets/logo.png" alt="ListenMe Logo" width="140" height="140">
 </p>
 
 <h1 align="center">ListenMe Player — Open Edition</h1>
