@@ -1,0 +1,64 @@
+buildscript {
+    ext.kotlin_version = '2.1.0' // <= не ставь выше! receive_sharing_intent поддерживает max 1.9.x
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://storage.googleapis.com/download.flutter.io' }
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.1.2' // <= тоже не выше!
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.3.15' // версия может быть выше
+
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://storage.googleapis.com/download.flutter.io' }
+        flatDir {
+            dirs 'libs'
+        }
+    }
+
+    // Настроим правильный jvmTarget для всех Kotlin зависимостей
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+        kotlinOptions {
+            jvmTarget = "11"
+        }
+    }
+}
+
+// === Force Java/Kotlin target = 11 for all subprojects (plugins included) ===
+subprojects { sub ->
+
+    afterEvaluate {
+        // Применяем compileOptions ко всем Android модулям (в т.ч. file_picker)
+        if (sub.hasProperty("android")) {
+            sub.android {
+                compileOptions {
+                    sourceCompatibility JavaVersion.VERSION_11
+                    targetCompatibility JavaVersion.VERSION_11
+                }
+            }
+        }
+    }
+
+    // Для Java
+    tasks.withType(JavaCompile).configureEach {
+        it.sourceCompatibility = JavaVersion.VERSION_11
+        it.targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    // Для Kotlin
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+        kotlinOptions {
+            jvmTarget = "11"
+            freeCompilerArgs += ["-Xjvm-default=all"]
+        }
+    }
+}
+

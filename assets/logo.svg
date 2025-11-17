@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<style>
+    .active {
+fill: #0a1a4f;
+}
+    .inactive {
+fill: #00eaff;
+opacity: 0.85;
+}
+text {
+font-family: 'Arial', sans-serif;
+font-weight: bold;
+}
+</style>
+
+<!-- Светящиеся фоновые элементы (опционально — можно убрать если нужен чистый логотип) -->
+<defs>
+<filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+<feGaussianBlur stdDeviation="20" result="coloredBlur"/>
+<feMerge>
+<feMergeNode in="coloredBlur"/>
+<feMergeNode in="SourceGraphic"/>
+</feMerge>
+</filter>
+</defs>
+
+<!-- Треугольник (Play) -->
+<polygon class="inactive" filter="url(#glow)"
+points="100,220 180,260 100,300" />
+
+<!-- Облако текста -->
+<path class="inactive" filter="url(#glow)"
+d="M410 210h-100a10 10 0 0 0-10 10v60a10 10 0 0 0 10 10h40l20 20v-20h40a10 10 0 0 0 10-10v-60a10 10 0 0 0-10-10z" />
+
+<!-- Ухо -->
+<path class="active"
+d="M240 100c-80 0-120 80-120 150s40 130 110 130c30 0 50-20 60-50 10-30 20-50 40-70s30-40 30-70-20-90-120-90zm0 30c60 0 90 40 90 70s-10 40-30 60-30 40-40 70-20 40-40 40c-50 0-80-50-80-100s30-110 100-110z" />
+
+<!-- Волны внутри уха -->
+<path class="inactive" d="M220 210 q10-20 20 0" />
+<path class="inactive" d="M210 200 q10-30 20 0" />
+<path class="inactive" d="M200 190 q10-40 20 0" />
+
+<!-- Текст -->
+<text x="110" y="390" font-size="60" class="active">ListenMe</text>
+<text x="140" y="450" font-size="60" class="active">Player</text>
+</svg>

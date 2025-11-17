@@ -1,0 +1,114 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.listenme.player">
+
+
+
+
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
+
+    <!-- Фоновое воспроизведение -->
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"/>
+
+    <!-- ДОБАВЬ эти строки для Android 13+ -->
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
+
+    <!-- Доступ к файлам (Android 10 и ниже) -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
+
+
+
+    <application
+        android:label="ListenMe Player"
+        android:icon="@mipmap/ic_launcher"
+        android:usesCleartextTraffic="true"
+        tools:ignore="ScopedStorage">
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-6676973922051829~9868627751"/>
+        <!-- Это тестовый App ID Google, замени на свой! -->
+
+        <!-- Главная активность -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="flutterEmbedding"
+                android:value="2"/>
+            <!-- обычный запуск -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <!-- открыть файл -->
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.VIEW"/>
+                <category
+                    android:name="android.intent.category.DEFAULT"/>
+                <category
+                    android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:mimeType="audio/*"/>
+                <data
+                    android:scheme="file"/>
+                <data
+                    android:scheme="content"/>
+            </intent-filter>
+            <!-- поделиться файлом -->
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.SEND"/>
+                <category
+                    android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:mimeType="audio/*"/>
+            </intent-filter>
+            <!-- поделиться несколькими файлами -->
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.SEND_MULTIPLE"/>
+                <category
+                    android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:mimeType="audio/*"/>
+            </intent-filter>
+        </activity>
+        <!-- Сервис для фонового воспроизведения -->
+        <service
+            android:name="com.ryanheise.audioservice.AudioService"
+            android:exported="true"
+            android:enabled="true"
+            android:foregroundServiceType="mediaPlayback"
+            tools:ignore="Instantiatable">
+            <intent-filter>
+                <action
+                    android:name="android.media.browse.MediaBrowserService"/>
+            </intent-filter>
+        </service>
+        <!-- Приёмник событий кнопок управления -->
+        <receiver
+            android:name="com.ryanheise.audioservice.MediaButtonReceiver"
+            android:exported="true"
+            tools:ignore="Instantiatable">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.MEDIA_BUTTON"/>
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>
