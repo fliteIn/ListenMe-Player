@@ -33,45 +33,76 @@ Some private modules (premium logic, ads, Firebase configuration, service keys) 
 
 ## ✨ Features
 
-### 🎧 Playback & Navigation
-- Segment playback between markers with fine adjustment
-- Jump between silence regions
-- Playback with skip functions and smooth scrubbing
-- Jog wheel with precise rewind buttons (continuous speed control)
-- Fully configurable playback speed
+<table>
+  <tr>
+    <!-- Левая колонка (фичи) -->
+    <td style="vertical-align: top; width: 60%">
 
-### 🔍 Silence & PCM Analysis
-- Local audio analysis
-- PCM level map generation
-- Silence detection
-- Adjustable silence threshold
-- Real-time loudness visualization
+      <h3>🎧 Playback & Navigation</h3>
+      <ul>
+        <li>Segment playback between markers with fine adjustment</li>
+        <li>Jump between silence regions</li>
+        <li>Playback with skip functions and smooth scrubbing</li>
+        <li>Jog wheel with precise rewind buttons (continuous speed control)</li>
+        <li>Fully configurable playback speed</li>
+      </ul>
 
-### 🎛 UI Customization
-- Full theme editor
-- Adjustable colors, gradients, and shadows
-- Configurable widget layout with drag-and-drop
-- Customizable speed ranges (playback + seek)
-- Background image support
+      <h3>🔍 Silence & PCM Analysis</h3>
+      <ul>
+        <li>Local audio analysis</li>
+        <li>PCM level map generation</li>
+        <li>Silence detection</li>
+        <li>Adjustable silence threshold</li>
+        <li>Real-time loudness visualization</li>
+      </ul>
 
-### 📁 Playlists
-- Folder-based playlist with subfolder navigation
-- Manual playlist with drag-and-drop reordering
-- Audio tag metadata parsing
-- Persistent playlist source memory
-- Playback modes: singleOnce, singleLoop, playlistOnce, playlistLoop, shuffle
+      <h3>🎛 UI Customization</h3>
+      <ul>
+        <li>Full theme editor</li>
+        <li>Adjustable colors, gradients, and shadows</li>
+        <li>Configurable widget layout with drag-and-drop</li>
+        <li>Customizable speed ranges (playback + seek)</li>
+        <li>Background image support</li>
+      </ul>
 
-### 💾 Cache
-- Adjustable cache size
-- Custom retention time
-- Clear cache function
+      <h3>📁 Playlists</h3>
+      <ul>
+        <li>Folder-based playlist with subfolder navigation</li>
+        <li>Manual playlist with drag-and-drop reordering</li>
+        <li>Audio tag metadata parsing</li>
+        <li>Persistent playlist source memory</li>
+        <li>Playback modes: singleOnce, singleLoop, playlistOnce, playlistLoop, shuffle</li>
+      </ul>
 
-### 🎚 Equalizer
-- Full equalizer with presets
-- Custom user-defined settings
+      <h3>💾 Cache</h3>
+      <ul>
+        <li>Adjustable cache size</li>
+        <li>Custom retention time</li>
+        <li>Clear cache function</li>
+      </ul>
 
-### 📖 Help
-- Built-in help section describing each UI element and screen
+      <h3>🎚 Equalizer</h3>
+      <ul>
+        <li>Full equalizer with presets</li>
+        <li>Custom user-defined settings</li>
+      </ul>
+
+      <h3>📖 Help</h3>
+      <ul>
+        <li>Built-in help section describing each UI element and screen</li>
+      </ul>
+
+    </td>
+
+    <!-- Правая колонка (GIF) -->
+    <td style="vertical-align: top; text-align: center; width: 40%">
+      <img src="assets/demo.gif" alt="App demo" width="320" style="border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.15);">
+      <br><br>
+      <em>See ListenMe Player in action</em>
+    </td>
+
+  </tr>
+</table>
 
 ---
 
