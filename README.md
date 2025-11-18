@@ -29,82 +29,83 @@ Some private modules (premium logic, ads, Firebase configuration, service keys) 
 > To showcase architecture design, UI/UX decisions, audio processing techniques,  
 > and the engineering approach behind building a complex Flutter-based audio player.
 
----
+
 
 ## ✨ Features
 
-<table>
-  <tr>
-    <!-- Левая колонка (фичи) -->
-    <td style="vertical-align: top; width: 60%">
-
-      <h3>🎧 Playback & Navigation</h3>
-      <ul>
-        <li>Segment playback between markers with fine adjustment</li>
-        <li>Jump between silence regions</li>
-        <li>Playback with skip functions and smooth scrubbing</li>
-        <li>Jog wheel with precise rewind buttons (continuous speed control)</li>
-        <li>Fully configurable playback speed</li>
-      </ul>
-
-      <h3>🔍 Silence & PCM Analysis</h3>
-      <ul>
-        <li>Local audio analysis</li>
-        <li>PCM level map generation</li>
-        <li>Silence detection</li>
-        <li>Adjustable silence threshold</li>
-        <li>Real-time loudness visualization</li>
-      </ul>
-
-      <h3>🎛 UI Customization</h3>
-      <ul>
-        <li>Full theme editor</li>
-        <li>Adjustable colors, gradients, and shadows</li>
-        <li>Configurable widget layout with drag-and-drop</li>
-        <li>Customizable speed ranges (playback + seek)</li>
-        <li>Background image support</li>
-      </ul>
-
-      <h3>📁 Playlists</h3>
-      <ul>
-        <li>Folder-based playlist with subfolder navigation</li>
-        <li>Manual playlist with drag-and-drop reordering</li>
-        <li>Audio tag metadata parsing</li>
-        <li>Persistent playlist source memory</li>
-        <li>Playback modes: singleOnce, singleLoop, playlistOnce, playlistLoop, shuffle</li>
-      </ul>
-
-      <h3>💾 Cache</h3>
-      <ul>
-        <li>Adjustable cache size</li>
-        <li>Custom retention time</li>
-        <li>Clear cache function</li>
-      </ul>
-
-      <h3>🎚 Equalizer</h3>
-      <ul>
-        <li>Full equalizer with presets</li>
-        <li>Custom user-defined settings</li>
-      </ul>
-
-      <h3>📖 Help</h3>
-      <ul>
-        <li>Built-in help section describing each UI element and screen</li>
-      </ul>
-
-    </td>
-
-    <!-- Правая колонка (GIF) -->
-    <td style="vertical-align: top; text-align: center; width: 40%">
-      <img src="assets/demo.gif" alt="App demo" width="320" style="border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.15);">
-      <br><br>
-      <em>See ListenMe Player in action</em>
-    </td>
-
-  </tr>
+<table> 
+  <tr> 
+    <!-- Левая колонка (фичи) --> 
+    <td style="vertical-align: top; width: 60%"> 
+      <h3>🎧 Playback & Navigation</h3> 
+      <ul> 
+        <li>Segment playback between markers with fine adjustment</li> 
+        <li>Jump between silence regions</li> 
+        <li>Playback with skip functions and smooth scrubbing</li> 
+        <li>Jog wheel with precise rewind buttons (continuous speed control)</li> 
+        <li>Fully configurable playback speed</li> 
+      </ul> 
+      <h3>🔍 Silence & PCM Analysis</h3> 
+      <ul> 
+        <li>Local audio analysis</li> 
+        <li>PCM level map generation</li> 
+        <li>Silence detection</li> 
+        <li>Adjustable silence threshold</li> 
+        <li>Real-time loudness visualization</li> 
+      </ul> <h3>🎛 UI Customization</h3> 
+      <ul> 
+        <li>Full theme editor</li> 
+        <li>Adjustable colors, gradients, and shadows</li> 
+        <li>Configurable widget layout with drag-and-drop</li> 
+        <li>Customizable speed ranges (playback + seek)</li> 
+        <li>Background image support</li> </ul> <h3>📁 Playlists</h3> 
+      <ul> <li>Folder-based playlist with subfolder navigation</li> 
+        <li>Manual playlist with drag-and-drop reordering</li> <li>Audio tag metadata parsing</li> 
+        <li>Persistent playlist source memory</li> 
+        <li>Playback modes: singleOnce, singleLoop, playlistOnce, playlistLoop, shuffle</li> 
+      </ul> 
+      <h3>💾 Cache</h3> 
+      <ul> <li>Adjustable cache size</li> 
+        <li>Custom retention time</li> 
+        <li>Clear cache function</li> 
+      </ul> 
+      <h3>🎚 Equalizer</h3> 
+      <ul> 
+        <li>Full equalizer with presets</li> 
+        <li>Custom user-defined settings</li> 
+      </ul> 
+      <h3>📖 Help</h3> 
+      <ul> 
+        <li>Built-in help section describing each UI element and screen</li> 
+      </ul> 
+    </td> <!-- Правая колонка (GIF) --> 
+    <td style="vertical-align: top; text-align: center; width: 40%"> 
+      <table>
+        <tr>
+          <td align="center">
+            <h3>Jog</h3>
+            <img src="assets/Jog.gif" width="220" style="border-radius: 12px; margin: 4px;">
+          </td>
+          <td align="center">
+            <h3>Markers</h3>
+            <img src="assets/Markers.gif" width="220" style="border-radius: 12px; margin: 4px;">
+          </td>
+        </tr>
+        <tr>
+          <td align="center">
+            <h3>Screen edit</h3>
+            <img src="assets/Screen_edit.gif" width="220" style="border-radius: 12px; margin: 4px;">
+          </td>
+          <td align="center">
+            <h3>Playlist</h3>
+            <img src="assets/Playlist.gif" width="220" style="border-radius: 12px; margin: 4px;">
+          </td>
+        </tr>
+      </table>
+    </td> 
+  </tr> 
 </table>
 
----
 
 ## 🧱 Architecture
 
